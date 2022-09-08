@@ -22,7 +22,7 @@ class Contenedor { //obtener todos los productos
     async getProductRandom() {
         try {
             const contenido = await this.getAll();
-            const productRandom = contenido [Math.floor(Math.random() * contenido.lenght)]
+            const productRandom = contenido [Math.floor(Math.random() * contenido.length)]
             return productRandom
         } catch (error) {}
     }
@@ -42,7 +42,3 @@ app.get("/productos", (req, resp) => {
 app.get("/productoRandom", async (req, resp) =>{
     contenedor.getProductRandom().then((product) => resp.send(product))
 });
-
-app.get ("*", async (req, resp)=>{
-    resp.send('Ir a <a href="./productos">Productos</a> \n Ir a <a href="./productoRandom">Producto Random</a>')
-})
